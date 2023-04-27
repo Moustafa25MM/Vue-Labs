@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vueCDN.js"></script>
+</head>
+<body>
+    <!-- <div id="mainapp2">
+        {{message}}
+    </div>
+    <div id="mainapp">
+        <p>Message : {{message}} </p>
+    </div> -->
+    <div id="container">
+        <h2 :title="branch">{{message}}</h2>
+        <input type="number" v-model.value="counter">{{counter}}
+
+        <ul>
+            <li v-for="student in students" :key="student.id" :title="student.city">{{student.name}}</li>
+        </ul>
+
+        <button v-on:click.ctrl="showMessage()"> Show </button>
+        <p></p>
+        <br>
+        <p>{{getMessage()}}</p>
+
+        <br>
+        <br>
+        <h3 v-if="degree > 90" >Degree > 90</h3>
+        <h3 v-else-if="degree < 90">Degree < 90</h3>
+        <h3 v-else >Degree == 90</h3>
+        <br>
+        <br>
+        <!-- <p v-html>{{welcomeMessage}}</p> -->
+    </div>
+    <script>
+        //create Vue Instance
+        const app = Vue.createApp({
+            //data : --> returns an object (function)    
+            data:()=>({
+                message:'Hello World',
+                branch:'new Capital',
+                intake:30,
+                welcomeMessage:'<span>Welcome to VueJS </span>',
+                degree:20,
+                counter:10,
+                students:[{id:100,name:'moustafa',city:'suez'},
+                          {id:200,name:'ahmed',city:'cairo'}]
+            }),
+            methods:{
+                showMessage(){
+                    alert(this.message.toUpperCase());
+                },
+                getMessage(){
+                    return this.message.toLowerCase();
+                }
+            }, 
+        })
+
+        // Mount (CSS selector)
+        app.mount('#container')
+    </script>
+</body>
+</html>
